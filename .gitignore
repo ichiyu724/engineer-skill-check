@@ -1,0 +1,11 @@
+node_modules
+log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+/storage/*
+.byebug_history
+/.bundle
