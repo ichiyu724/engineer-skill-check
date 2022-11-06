@@ -7,7 +7,7 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
         required: を入力してください
-        blank: を入力してください
+        blank: が入力されていません
         too_long: は%{count}文字以内で入力してください
         too_short: は%{count}文字以上で入力してください
         taken: はすでに存在します
