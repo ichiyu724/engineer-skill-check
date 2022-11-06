@@ -9,3 +9,4 @@ log/*
 /storage/*
 .byebug_history
 /.bundle
+/public/packs

@@ -7,7 +7,7 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
         required: を入力してください
-        blank: を入力してください
+        blank: が入力されていません
         too_long: は%{count}文字以内で入力してください
         too_short: は%{count}文字以上で入力してください
         taken: はすでに存在します
@@ -28,10 +28,11 @@ ja:
         first_name: 氏名（名）
         account: アカウント
         password: パスワード
-        e_mail: メールアドレス
+        email: メールアドレス
         date_of_joining: 入社年月日
         department_id: 部署
         office_id: オフィス
         employee_info_manage_auth: 社員情報管理権限
+        news_post_auth: お知らせ投稿権限
       profile:
         profile: プロフィール
