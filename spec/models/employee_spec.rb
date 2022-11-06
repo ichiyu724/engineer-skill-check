@@ -34,6 +34,12 @@ RSpec.describe Employee, type: :model do
         employee.valid?
         expect(employee.errors.full_messages).to include("氏名（姓） が入力されていません")
       end
+
+      it "氏名（名）が空欄だと登録できない" do
+        employee.first_name = ""
+        employee.valid?
+        expect(employee.errors.full_messages).to include("氏名（名） が入力されていません")
+      end
     end
   end
 end
