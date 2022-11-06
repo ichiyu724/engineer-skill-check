@@ -11,18 +11,6 @@ RSpec.describe Employee, type: :model do
     end
 
     context "新規登録が失敗するとき" do
-      it "emailが空欄だと登録できない" do
-        employee.email = ""
-        employee.valid?
-        expect(employee.errors.full_messages).to include("メールアドレス が入力されていません")
-      end
-
-      it "入社年月日が空欄だと登録できない" do
-        employee.date_of_joining = ""
-        employee.valid?
-        expect(employee.errors.full_messages).to include("入社年月日 が入力されていません")
-      end
-
       it "社員番号が空欄だと登録できない" do
         employee.number = ""
         employee.valid?
@@ -45,6 +33,18 @@ RSpec.describe Employee, type: :model do
         employee.account = ""
         employee.valid?
         expect(employee.errors.full_messages).to include("アカウント が入力されていません")
+      end
+
+      it "emailが空欄だと登録できない" do
+        employee.email = ""
+        employee.valid?
+        expect(employee.errors.full_messages).to include("メールアドレス が入力されていません")
+      end
+
+      it "入社年月日が空欄だと登録できない" do
+        employee.date_of_joining = ""
+        employee.valid?
+        expect(employee.errors.full_messages).to include("入社年月日 が入力されていません")
       end
     end
   end
