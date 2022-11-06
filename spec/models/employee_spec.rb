@@ -14,7 +14,7 @@ RSpec.describe Employee, type: :model do
       it "emailが空欄だと登録できない" do
         employee.email = ""
         employee.valid?
-        expect(employee.errors.full_messages).to include("メールアドレスが入力されていません")
+        expect(employee.errors.full_messages).to include("メールアドレス が入力されていません")
       end
     end
   end
