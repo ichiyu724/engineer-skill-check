@@ -7,5 +7,13 @@ RSpec.describe Employee, type: :model do
         expect(employee).to be_valid
       end
     end
+
+    context "メールアドレス入力欄が不正の時" do
+      it "emailが空欄だと登録できない" do
+        employee.username = ""
+        employee.valid?
+        expect(user.errors.full_messages).to include("メールアドレスが入力されていません")
+      end
+    end
   end
 end
