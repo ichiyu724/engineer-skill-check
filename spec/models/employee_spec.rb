@@ -22,6 +22,12 @@ RSpec.describe Employee, type: :model do
         employee.valid?
         expect(employee.errors.full_messages).to include("入社年月日 が入力されていません")
       end
+
+      it "社員番号が空欄だと登録できない" do
+        employee.number = ""
+        employee.valid?
+        expect(employee.errors.full_messages).to include("社員番号 が入力されていません")
+      end
     end
   end
 end
