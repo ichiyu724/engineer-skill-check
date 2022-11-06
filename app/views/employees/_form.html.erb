@@ -32,6 +32,11 @@
     </div>
 
     <div class="form_group">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="form_group">
       <%= f.label :department_id %>
       <%= f.collection_select(:department_id, @departments, :id, :name)%>
     </div>
