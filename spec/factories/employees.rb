@@ -7,5 +7,6 @@ FactoryBot.define do
     password { "password" }
     email { "hoge@example.co.jp" }
     date_of_joining { 2022-11-30 }
+    association :office
   end
 end
