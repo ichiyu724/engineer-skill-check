@@ -9,6 +9,7 @@ class Employee < ApplicationRecord
   validates :account, presence: true, uniqueness: true
   validates :password, presence: true
   validates :email, presence: true
+  validates :date_of_joining, presence: true
 
   scope :active, -> {
     where(deleted_at: nil)
