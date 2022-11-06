@@ -8,5 +8,6 @@ FactoryBot.define do
     email { "hoge@example.co.jp" }
     date_of_joining { 2022-11-30 }
     association :office
+    association :department
   end
 end

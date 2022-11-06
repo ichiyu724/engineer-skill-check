@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :office do
-    name { "総務部" }
+    name { "東京" }
   end
 end
