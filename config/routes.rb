@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     resources :profiles
   end
 
-  resouces :articles
+  resources :articles
 end
