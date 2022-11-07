@@ -21,6 +21,7 @@ ja:
       department: 部署
       office: オフィス
       profile: プロフィール
+      article: お知らせ
     attributes:
       employee:
         number: 社員番号
@@ -36,3 +37,6 @@ ja:
         news_post_auth: お知らせ投稿権限
       profile:
         profile: プロフィール
+      article:
+        title: タイトル
+        content: 内容
