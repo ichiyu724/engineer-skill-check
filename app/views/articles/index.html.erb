@@ -1,3 +1,24 @@
 <% if current_user.news_post_auth %>
-  <%= link_to "新規追加", articles_path, class: "btn" %>
+  <p><%= link_to "新規追加", articles_path, class: "btn" %></p>
 <% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>公開日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.created_at %></td>
+      </tr>
+      <% if current_user.news_post_auth || @article.employee == current_user %>
+        <%= link_to "編集", edit_article_path(article) %>
+        <%= link_to "削除", article_path(article), method: :delete, data: { confirm: '投稿を削除しますか？' }%>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
