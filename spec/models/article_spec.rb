@@ -22,6 +22,11 @@ RSpec.describe Article, type: :model do
         article.valid?
         expect(article.errors.full_messages).to include("タイトル は50文字以内で入力してください")
       end
+      it "お知らせ内容が空欄だと登録できない" do
+        article.content = ""
+        article.valid?
+        expect(article.errors.full_messages).to include("内容 が入力されていません")
+      end
     end
   end
 end
