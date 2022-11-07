@@ -9,5 +9,13 @@ RSpec.describe Article, type: :model do
         expect(article).to be_valid
       end
     end
+
+    context "新規投稿が失敗するとき" do
+      it "タイトルが空欄だと登録できない" do
+        article.title = ""
+        article.valid?
+        expect(article.errors.full_messages).to include("タイトル が入力されていません")
+      end
+    end
   end
 end
