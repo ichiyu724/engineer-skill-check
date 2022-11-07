@@ -16,6 +16,12 @@ RSpec.describe Article, type: :model do
         article.valid?
         expect(article.errors.full_messages).to include("タイトル が入力されていません")
       end
+
+      it "タイトルが50文字以上だと投稿できない"  do
+        article.title = "アイウエオかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわおん0123456789"
+        article.valid?
+        expect(article.errors.full_messages).to include("タイトル は50文字以内で入力してください")
+      end
     end
   end
 end
