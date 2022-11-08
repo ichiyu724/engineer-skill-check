@@ -8,7 +8,15 @@ class ArticlesController < ApplicationController
   end
 
   def create
-
+    @article = Article.new(article_params)
+    @article.employee = current_user
+    if @article.save
+      flash[:notice] = 'お知らせを投稿しました'
+      redirect_to articles_path
+    else 
+      flash.now[:alert] = '投稿に失敗しました。'
+      render :new
+    end
   end
 
   def show
@@ -25,5 +33,11 @@ class ArticlesController < ApplicationController
 
   def destroy
 
+  end
+
+  private
+
+  def article_params
+    params.require(:article).permit(:title, :content, :deleted_at, :employee_id)
   end
 end
