@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
   
   def index
     @articles = Article.active.order("#{sort_column} #{sort_direction}")
@@ -38,7 +38,9 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-
+    @article.destroy
+    flash[:notice] = '投稿を削除しました。'
+    redirect_to :articles
   end
 
   private
