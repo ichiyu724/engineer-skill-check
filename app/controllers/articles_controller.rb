@@ -25,11 +25,16 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
+    if @article.update(article_params)
+      flash[:notice]= "お知らせを更新しました"
+      redirect_to articles_path
+    else
+      flash.now[:alert] = '投稿に失敗しました。'
+      render :edit
+    end
   end
 
   def destroy
