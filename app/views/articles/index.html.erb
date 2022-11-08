@@ -12,7 +12,7 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= article.title %></td>
+        <td><%= link_to article.title, article_path(article) %></td>
         <td><%= l article.created_at, format: :short %></td>
         <% if current_user.news_post_auth || @article.employee == current_user %>
           <td><%= link_to "編集", edit_article_path(article) %></td>

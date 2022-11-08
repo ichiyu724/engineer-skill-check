@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: [:show, :edit, :update]
+  
   def index
     @articles = Article.active.order("#{sort_column} #{sort_direction}")
   end
@@ -20,7 +22,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
@@ -47,5 +48,9 @@ class ArticlesController < ApplicationController
 
   def sort_direction
     params[:direction] ? params[:direction] : 'asc'
+  end
+
+  def set_article
+    @article = Article.find(params[:id])
   end
 end
