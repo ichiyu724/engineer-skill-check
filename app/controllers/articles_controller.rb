@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
   end
 
   def sort_direction
-    params[:direction] ? params[:direction] : 'asc'
+    params[:direction] ? params[:direction] : 'desc'
   end
 
   def set_article
