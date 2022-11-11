@@ -37,6 +37,9 @@
       }
     }
   }
+  .pagination {
+    justify-content: center;
+  }
 }
 
 .employee_form {
@@ -58,7 +61,7 @@
       margin-top: 5px;
     }
 
-    input[type="checkbox"]{
+    input[type="checkbox"] {
       margin: 12px 0 0 -227px;
     }
 
@@ -76,7 +79,7 @@
     }
   }
 
-  input[type="submit"]{
+  input[type="submit"] {
     position: absolute;
     top: -38px;
     right: 20px;
