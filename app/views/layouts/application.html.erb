@@ -13,6 +13,7 @@
     <% if logged_in? %>
       <%= render 'layouts/header' %>
     <% end %>
+    <%= flash[:notice] ? flash[:notice] : flash[:alert] %>
     <div class='container'>
       <%= yield %>
     </div>

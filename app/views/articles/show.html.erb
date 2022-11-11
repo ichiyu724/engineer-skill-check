@@ -1,0 +1,10 @@
+<div class="article_space">
+  <p class="article_index"><%= link_to "一覧に戻る", articles_path, class: "btn" %></p>
+
+  <div class="row">
+    <span class="label">タイトル</span>
+    <span class="article_value"><%= @article.title %></span>
+  </div>
+
+  <span><%= @article.content %></span>
+</div>

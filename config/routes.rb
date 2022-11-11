@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :employees do
     resources :profiles
   end
+
+  resources :articles
 end
