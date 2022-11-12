@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   
   def index
-    @articles = Article.active.order("#{sort_column} #{sort_direction}")
+    @articles = Article.active.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   def new
