@@ -19,6 +19,15 @@ RSpec.describe "お知らせ新規投稿", type: :system do
         expect(current_path).to eq articles_path
         expect(page).to have_content "お知らせを投稿しました"
       end
+
+      scenario "誤った情報では登録できないこと" do
+        fill_in 'article[title]', with: ""
+        fill_in 'article[content]', with: ""
+        expect{
+          click_button '保存'
+        }.to change { Article.count }.by(0)
+        expect(current_path).to eq "/articles"
+      end
     end
   end
 end
