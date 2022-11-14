@@ -27,6 +27,20 @@ RSpec.describe "社員新規登録", type: :system do
         expect(current_path).to eq employees_path
         expect(page).to have_content "社員「渡辺 太郎」を登録しました。"
       end
+
+      scenario "誤った情報では登録できないこと" do
+        fill_in 'employee[number]', with: ""
+        fill_in 'employee[last_name]', with: ""
+        fill_in 'employee[first_name]', with: ""
+        fill_in 'employee[account]', with: ""
+        fill_in 'employee[password]', with: ""
+        fill_in 'employee[email]', with: ""
+        fill_in 'employee[date_of_joining]', with: ""
+        expect{
+          click_button '保存'
+        }.to change { Employee.count }.by(0)
+        expect(current_path).to eq "/employees"
+      end
     end
   end
 end
