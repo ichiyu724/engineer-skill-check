@@ -48,5 +48,17 @@ RSpec.describe "お知らせ一覧", type: :system do
         expect(page).to have_link "削除"
       end
     end
+
+    context "お知らせ投稿権限がない時" do
+      before do
+        login(another_employee)
+        visit articles_path
+      end
+
+      scenario "編集、削除ボタンが表示されないこと" do
+        expect(page).not_to have_link "編集"
+        expect(page).not_to have_link "削除"
+      end
+    end
   end
 end
