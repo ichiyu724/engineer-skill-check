@@ -34,7 +34,7 @@ end
 
 RSpec.describe "お知らせ一覧", type: :system do
   let!(:employee) { create(:employee) }
-  let!(:another_employee) { create(:employee, number: "2", account: "foo", news_post_auth: false) }
+  let!(:another_employee) { create(:employee, number: "1", account: "foo", news_post_auth: false) }
   let!(:article) { create(:article, employee_id: employee.id) }
   describe "お知らせ一覧ページ" do
     context "お知らせ投稿権限がある時" do
@@ -77,6 +77,28 @@ RSpec.describe "お知らせ一覧", type: :system do
           click_on '削除'
         }.to change { Article.count }.by(-1)
         expect(current_path).to eq articles_path
+      end
+    end
+
+    context "他者の投稿を編集、削除できないことの検証" do
+      before do
+        employee2 = FactoryBot.create(:employee, number: "2", account: "bar")
+        login(employee2)
+        visit articles_path
+      end
+
+      scenario "他者の投稿は編集できないこと" do
+        click_on "編集"
+        expect(current_path).to eq "/articles"
+        expect(page).to have_content "権限がありません"
+      end
+
+      scenario "他者の投稿は削除できないこと" do
+        expect{
+          click_on '削除'
+        }.to change { Article.count }.by(0)
+        expect(current_path).to eq "/articles"
+        expect(page).to have_content "権限がありません"
       end
     end
   end
