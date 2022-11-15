@@ -15,7 +15,7 @@
         <tr class="article">
           <td class="title"><%= link_to article.title, article_path(article) %></td>
           <td><%= l article.created_at, format: :short %></td>
-          <% if current_user.news_post_auth || @article.employee == current_user %>
+          <% if current_user.news_post_auth || article.employee == current_user %>
             <td class="btn_th"><%= link_to "編集", edit_article_path(article), class: 'btn' %></td>
             <td class="btn_th"><%= link_to "削除", article_path(article), method: :delete, data: { confirm: '投稿を削除しますか？' }, class: 'btn'%></td>
           <% end %>
