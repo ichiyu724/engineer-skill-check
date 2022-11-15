@@ -47,7 +47,6 @@ end
 
 RSpec.describe "社員紹介ページ", type: :system do
   let!(:employee) { create(:employee) }
-  let!(:employee2 ) { create(:employee, number: "1", account: "foo", employee_info_manage_auth: false) }
 
   describe "社員紹介ページ" do
     context "社員管理権限がある時" do
@@ -60,6 +59,20 @@ RSpec.describe "社員紹介ページ", type: :system do
         expect(page).to have_link "新規追加"
         expect(page).to have_link "編集"
         expect(page).to have_link "削除"
+      end
+    end
+
+    context "社員管理権限がない時" do
+      before do
+        employee2 = FactoryBot.create(:employee, number: "1", account: "foo", employee_info_manage_auth: false)
+        login(employee2)
+        visit employees_path
+      end
+
+      scenario "新規追加、編集、削除ボタンが表示されないこと" do
+        expect(page).not_to have_link "新規追加"
+        expect(page).not_to have_link "編集"
+        expect(page).not_to have_link "削除"
       end
     end
   end
