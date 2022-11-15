@@ -106,7 +106,7 @@ RSpec.describe "お知らせ一覧", type: :system do
   end
 end
 
-RSpec.describe "お知らせ一覧", type: :system do
+RSpec.describe "お知らせ参照", type: :system do
   let!(:employee) { create(:employee) }
   let!(:another_employee) { create(:employee, number: "1", account: "foo", news_post_auth: false) }
   let!(:article) { create(:article, employee_id: employee.id) }
