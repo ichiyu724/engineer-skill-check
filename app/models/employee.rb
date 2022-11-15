@@ -1,8 +1,8 @@
 class Employee < ApplicationRecord
   belongs_to :office
   belongs_to :department
-  has_many :profiles
-  has_many :articles
+  has_many :profiles, dependent: :destroy
+  has_many :articles, dependent: :destroy
 
   validates :number, presence: true, uniqueness: true
   validates :last_name, presence: true
