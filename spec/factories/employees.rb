@@ -9,5 +9,7 @@ FactoryBot.define do
     date_of_joining { 2022-11-30 }
     association :office
     association :department
+    employee_info_manage_auth { true }
+    news_post_auth { true }
   end
 end

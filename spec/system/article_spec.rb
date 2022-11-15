@@ -31,3 +31,22 @@ RSpec.describe "お知らせ新規投稿", type: :system do
     end
   end
 end
+
+RSpec.describe "お知らせ一覧", type: :system do
+  let!(:employee) { create(:employee) }
+  let!(:another_employee) { create(:employee, number: "2", account: "foo", news_post_auth: false) }
+  let!(:article) { create(:article, employee_id: employee.id) }
+  describe "お知らせ一覧ページ" do
+    context "お知らせ投稿権限がある時" do
+      before do
+        login(employee)
+        visit articles_path
+      end
+
+      scenario "編集、削除ボタンが表示できること" do
+        expect(page).to have_link "編集"
+        expect(page).to have_link "削除"
+      end
+    end
+  end
+end
