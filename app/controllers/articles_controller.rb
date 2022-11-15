@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_poster, only: [:edit, :update, :destroy]
   
   def index
     @articles = Article.active.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
@@ -59,5 +60,10 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def ensure_poster
+    @article = Article.find(params[:id])
+    redirect_to articles_path, flash: {notice: "権限がありません"} unless @article.employee == current_user
   end
 end

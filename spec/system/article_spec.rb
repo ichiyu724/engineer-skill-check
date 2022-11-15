@@ -60,5 +60,24 @@ RSpec.describe "お知らせ一覧", type: :system do
         expect(page).not_to have_link "削除"
       end
     end
+
+    context "自分の投稿を編集、削除できることの検証" do
+      before do
+        login(employee)
+        visit articles_path
+      end
+
+      scenario "自分の投稿は編集できること" do
+        click_on "編集"
+        expect(current_path).to eq edit_article_path(article)
+      end
+
+      scenario "自分の投稿は削除できること" do
+        expect{
+          click_on '削除'
+        }.to change { Article.count }.by(-1)
+        expect(current_path).to eq articles_path
+      end
+    end
   end
 end
