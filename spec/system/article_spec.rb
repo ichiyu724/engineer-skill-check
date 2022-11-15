@@ -105,3 +105,20 @@ RSpec.describe "お知らせ一覧", type: :system do
     end
   end
 end
+
+RSpec.describe "お知らせ一覧", type: :system do
+  let!(:employee) { create(:employee) }
+  let!(:another_employee) { create(:employee, number: "1", account: "foo", news_post_auth: false) }
+  let!(:article) { create(:article, employee_id: employee.id) }
+  describe "お知らせ参照ページ" do
+    before do
+      login(employee)
+      visit article_path(article)
+    end
+
+    scenario "お知らせ参照ページが表示できること" do
+      expect(page).to have_content article.title
+      expect(page).to have_content article.content
+    end
+  end
+end
