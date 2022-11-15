@@ -43,7 +43,8 @@ RSpec.describe "お知らせ一覧", type: :system do
         visit articles_path
       end
 
-      scenario "編集、削除ボタンが表示できること" do
+      scenario "新規追加、編集、削除ボタンが表示できること" do
+        expect(page).to have_link "新規追加"
         expect(page).to have_link "編集"
         expect(page).to have_link "削除"
       end
@@ -55,7 +56,8 @@ RSpec.describe "お知らせ一覧", type: :system do
         visit articles_path
       end
 
-      scenario "編集、削除ボタンが表示されないこと" do
+      scenario "新規追加、編集、削除ボタンが表示されないこと" do
+        expect(page).not_to have_link "新規追加"
         expect(page).not_to have_link "編集"
         expect(page).not_to have_link "削除"
       end
