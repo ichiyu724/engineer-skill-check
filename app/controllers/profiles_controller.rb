@@ -5,8 +5,14 @@ class ProfilesController < ApplicationController
   def index
   end
 
+  def show
+  end
+
   def new
     @profile = Profile.new
+  end
+
+  def edit
   end
 
   def create
@@ -17,12 +23,6 @@ class ProfilesController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-  end
-
-  def edit
   end
 
   def update
